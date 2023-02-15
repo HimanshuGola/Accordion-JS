@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700;900&display=swap');
+
+:root{
+    --clr-primary-text-dblue: hsl(238, 29%, 16%);
+    --clr-primary-text-sred: hsl(14, 88%, 65%);
+
+    --clr-neutral-text-vdblue: hsl(237, 12%, 33%);
+    --clr-neutral-text-dblue: hsl(240, 6%, 50%);
+
+    --clr-primary-gradient-sviolet: hsl(273, 75%, 66%);
+    --clr-primary-gradient-sblue: hsl(240, 73%, 65%);
+
+    --clr-dividers: hsl(240, 5%, 91%);
+
+    --ff-main: 'Kumbh Sans', sans-serif;
+
+    --fw-bold: 700;
+    --fw-regular: 400;
+
+    font-size: 12px;
+}
+
+/* RESET */
+
+*, *::before, *::after {
+box-sizing: border-box;
+}
+* {
+margin: 0;
+}
+html, body {
+min-height: 100vh;
+}
+body {
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+display: block;
+max-width: 100%;
+}
+input, button, textarea, select {
+font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+overflow-wrap: break-word;
+}
+#root, #__next {
+isolation: isolate;
+}
+
+
+/* MAIN CSS */
+
+body{
+    font-family: var(--ff-main);
+
+    display: grid;
+    place-content: center;
+
+    background-image: linear-gradient(to bottom, var(--clr-primary-gradient-sviolet), var(--clr-primary-gradient-sblue));
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    max-width: 500px;
+    margin-inline: 6%;
+    margin-top: 12rem;
+    margin-bottom: 5rem;
+
+    background-color: white;
+    border: none;
+    border-radius: 2rem;
+    box-shadow: 0 25px 25px -5px rgba(0 0 0 / 0.3);
+}
+
+picture{
+    position: relative;
+    z-index: 2;
+    width: 240px;
+    margin-inline: auto;
+    margin-top: -9rem;
+}
+
+picture::after{
+    position: absolute;
+    content: "";
+    width: 240px;
+    height: 104px;
+    background-image: url("images/bg-pattern-mobile.svg");
+    background-repeat: no-repeat;
+    z-index: 1;
+    top: 60%;
+}
+
+.faq-accordion{
+    padding: 4rem 8%;
+}
+
+h1{
+    text-align: center;
+    font-size: 2.65rem;
+    font-weight: var(--fw-bold);
+    color: var(--clr-primary-text-dblue);
+    margin-bottom: 1rem;
+}
+
+.accordion-item{
+    padding-block: 1.5rem;
+    border: none;
+    border-bottom: 1px solid var(--clr-dividers);
+}
+
+.question-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.question-container h2{
+    font-size: 1.1rem;
+    font-weight: var(--fw-regular);
+    color: var(--clr-neutral-text-vdblue);
+}
+
+.question-container h2:hover{
+    color: var(--clr-primary-text-sred);
+}
+
+.answer-container{
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.answer{
+    padding-top: 0.75rem;
+    font-size: 1rem;
+    font-weight: var(--fw-regular);
+    color: var(--clr-neutral-text-dblue);
+}
+
+.transform{
+    transition: all 0.35s ease;
+}
+
+.container-transform-active{
+    max-height: 65px;
+}
+
+.arrow-transform-active{
+    transform: rotate(180deg);
+}
+
+.heading-transform-active{
+    color: var(--clr-primary-text-dblue) !important;
+    font-weight: var(--fw-bold) !important;
+}
+
+
+@media (min-width: 800px){
+    main{
+        position: relative;
+        flex-direction: row;
+        max-width: 980px;
+        overflow: hidden;
+        margin-block: 1.5rem;
+    }
+
+    picture{
+        width: 100%;
+        margin-top: 0;
+        margin-left: -6rem;
+    }
+
+    body::before{
+        position: absolute;
+        content: "";
+        background-image: url("images/illustration-box-desktop.svg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        max-width: 180px;
+        width: 14%;
+        aspect-ratio: 1;
+        top: 270px;
+        left: calc(10vw - 11%);
+        z-index: 3;
+    }
+
+    picture::after{
+        position: absolute;
+        content: "";
+        background-image: url("images/bg-pattern-desktop.svg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 145%;
+        height: calc(165% + 20vw);
+        top: -45%;
+        left: -50%;
+        z-index: -1;
+    }
+
+    h1{
+        text-align: start;
+    }
+
+    .faq-accordion{
+        padding-right: 10%;
+        padding-bottom: 5.5rem;
+    }
+
+    .question-container h2{
+        font-size: 1.2rem;
+    }
+
+    .answer{
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 980px){
+    body::before{
+        width: 15%;
+        left: calc((90vw - 920px)/2);
+        top: 266px;
+    }
+}
+
+@media (min-width: 1080px){
+    body::before{
+        top: 266px;
+    }
+}
